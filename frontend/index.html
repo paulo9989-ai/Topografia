@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SIMAR-PE | Monitoramento de riscos</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brand-icon">◈</div><div><strong>SIMAR-PE</strong><small>Sistema de Monitoramento de Riscos · Pernambuco</small></div></div>
+  <div class="top-status"><span class="pulse"></span> Monitoramento demonstrativo</div>
+</header>
+<main class="layout">
+  <section class="intro">
+    <div><div class="eyebrow">PROTEÇÃO • PREVENÇÃO • INFORMAÇÃO</div><h1>Monitore sua região.</h1><p>Condições meteorológicas e topográficas próximas à sua localização.</p></div>
+    <button id="locateBtn" class="primary">◎ Usar minha localização</button>
+  </section>
+  <section class="summary-grid">
+    <article class="card risk-card"><div class="card-head"><span>RISCO ESTIMADO</span><span class="tag">EXPERIMENTAL</span></div><div class="risk-line"><div id="riskNumber" class="risk-number">—<small>%</small></div><div><b id="riskLevel">Aguardando localização</b><p id="riskText">Permita o acesso à localização para iniciar a consulta.</p></div></div><div class="meter"><i id="riskMeter"></i></div><small class="muted">Não representa alerta oficial ou previsão de desastre.</small></article>
+    <article class="card"><div class="card-head"><span>CHUVA NAS PRÓXIMAS HORAS</span><span class="source">Open-Meteo</span></div><div class="weather-main"><b id="rainNow">— mm</b><span>Próxima hora</span></div><div id="weatherMini" class="hour-strip"><span class="muted">Aguardando consulta…</span></div></article>
+    <article class="card"><div class="card-head"><span>TOPOGRAFIA LOCAL</span><span class="source">Open-Elevation</span></div><div class="weather-main"><b id="elevation">— m</b><span>Elevação aproximada</span></div><p class="muted">Declividade estimada: <strong id="slope">—</strong></p><small class="muted">Amostras em raio aproximado de 100 m.</small></article>
+  </section>
+  <section class="main-grid">
+    <article class="card map-card"><div class="section-head"><div><h2>Mapa de monitoramento</h2><p id="coords">Latitude: — · Longitude: —</p></div><span class="tag">ALTITUDE + RISCO</span></div><div id="map"></div><div class="map-reference"><a href="https://pt-br.topographic-map.com/map-cjsf3/Pernambuco/" target="_blank" rel="noopener">Abrir mapa topográfico de Pernambuco (site de referência) ↗</a></div><div class="legend"><span><i class="dot low"></i> Menor altitude</span><span><i class="dot mid"></i> Altitude intermediária</span><span><i class="dot high"></i> Maior altitude</span><span class="legend-separator">|</span><span><i class="dot risk-dot"></i> Grade de risco</span></div></article>
+    <aside class="side-stack">
+      <article class="card"><div class="card-head"><span>O QUE FAZER</span><span>☂</span></div><div id="recommendations" class="recommendations"><p>As recomendações aparecerão após a consulta da sua localização.</p></div></article>
+      <article class="card"><div class="card-head"><span>ALERTAS DA REGIÃO</span><span class="tag">SEM FEED OFICIAL</span></div><div class="notice"><b>Integração pendente</b><p>Este MVP ainda não consulta alertas oficiais da Defesa Civil ou APAC. Consulte os canais oficiais da sua região.</p></div></article>
+      <article class="card"><div class="card-head"><span>LOCALIZAÇÃO</span><span>⌖</span></div><p class="location-value" id="locationText">Aguardando GPS do navegador</p><p class="muted" id="updated">Última atualização: —</p></article>
+    </aside>
+  </section>
+  <section class="bottom-grid">
+    <article class="card"><div class="card-head"><span>PRECIPITAÇÃO POR HORA</span><span class="source">Próximas 12 horas</span></div><div id="forecast" class="forecast"><p class="muted">Consulte sua localização para carregar a previsão.</p></div></article>
+    <article class="card sos-card"><div class="card-head"><span>PEDIDO DE SOCORRO</span><span class="sos-icon">!</span></div><p>Registre uma solicitação demonstrativa com sua localização atual.</p><input id="sosName" placeholder="Seu nome (opcional)"><textarea id="sosMessage" placeholder="Descreva a situação" rows="2">Preciso de ajuda.</textarea><button id="sosBtn" class="danger">Enviar pedido demonstrativo</button><small class="muted">Não envia chamado real. Emergência: Bombeiros 193 · SAMU 192 · Defesa Civil 199.</small><div id="sosResult" class="sos-result"></div></article>
+  </section>
+  <footer>SIMAR-PE · Protótipo funcional para demonstração · Dados externos sujeitos à disponibilidade. Não substitui orientações oficiais.</footer>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="/static/app.js"></script>
+</body></html>

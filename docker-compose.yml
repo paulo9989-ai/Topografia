@@ -1,0 +1,7 @@
+services:
+  simar-pe:
+    build: .
+    container_name: simar-pe
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
